@@ -1,0 +1,9 @@
+{
+  "name": "balancing_robot",
+  "namespace": "@",
+  "description": "Balancing robot control nodes",
+  "sources": [
+    "BalanceControlNode.cpp",
+    "VelocityControlNode.cpp"
+   ]
+}

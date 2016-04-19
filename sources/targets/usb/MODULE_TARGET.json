@@ -1,0 +1,14 @@
+{
+  "name": "usb",
+  "description": "USB",
+  "module": "usb",
+  "required_packages": [
+    "common_msgs",
+    "sensor_msgs",
+    "actuator_msgs"
+  ],
+  "sources": [
+ "main.cpp"
+  ],
+  "includes": []
+}

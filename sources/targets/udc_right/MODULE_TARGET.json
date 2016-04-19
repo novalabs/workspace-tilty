@@ -1,0 +1,12 @@
+{
+  "name": "udc_right",
+  "description": "Right wheel uDC",
+  "module": "udc",
+  "required_packages": [
+  	"pid"
+  ],
+  "sources": [
+ "main.cpp"
+  ],
+  "includes": []
+}

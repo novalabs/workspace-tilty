@@ -1,0 +1,18 @@
+{
+  "name": "imu",
+  "description": "IMU",
+  "module": "imu",
+  "required_packages": [
+    "led",
+    "balancing_robot",
+    "actuator_msgs",
+    "differential_drive_msgs",
+    "sensor_msgs",
+    "pid",
+    "pid_msgs"
+  ],
+  "sources": [
+ "main.cpp"
+  ],
+  "includes": []
+}
