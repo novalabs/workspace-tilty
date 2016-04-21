@@ -35,7 +35,7 @@ namespace balancing_robot {
 		this->advertise(_left_pwm_publisher, configuration.left_pwm_topic);
 		this->advertise(_right_pwm_publisher, configuration.right_pwm_topic);
 
-		_pid.config(-250.0 / 4096.0, 0.2, 0.02, 0.02, -1.0, 1.0);
+		_pid.config(configuration.kp, configuration.ti, configuration.td, configuration.period / 1000.0, -1.0, 1.0);
 		_pid.set(0);
 
 		_pidParameters.kp = -250.0 / 4096.0;

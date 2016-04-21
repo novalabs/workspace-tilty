@@ -44,32 +44,39 @@ extern "C" {
 		module.initialize();
 
 		// Nodes configuration
-		led_subscriber.configuration["topic"] = "led";
+		led_subscriber.configuration.topic = "led";
 
-		gyro_publisher.configuration["topic"] = "gyro";
-		acc_publisher.configuration["topic"]  = "acc";
-		mag_publisher.configuration["topic"]  = "mag";
+		gyro_publisher.configuration.topic = "gyro";
+		acc_publisher.configuration.topic = "acc";
+		mag_publisher.configuration.topic = "mag";
 
-		madgwick_filter.configuration["topicGyro"] = gyro_publisher.configuration["topic"];
-		madgwick_filter.configuration["topicAcc"]  = acc_publisher.configuration["topic"];
-		madgwick_filter.configuration["topicMag"]  = mag_publisher.configuration["topic"];
-		madgwick_filter.configuration["topic"]     = "imu";
-		madgwick_filter.configuration["frequency"] = 50.0f;
+		madgwick_filter.configuration.topicGyro = gyro_publisher.configuration.topic;
+		madgwick_filter.configuration.topicAcc = acc_publisher.configuration.topic;
+		madgwick_filter.configuration.topicMag = mag_publisher.configuration.topic;
+		madgwick_filter.configuration.topic = "imu";
+		madgwick_filter.configuration.frequency = 50.0f;
 
-		balance_node.configuration["left_pwm_topic"]  = "pwm_left";
-		balance_node.configuration["right_pwm_topic"] = "pwm_right";
-		balance_node.configuration["attitude_topic"]  = "imu";
-		balance_node.configuration["setpoint_topic"]  = "tilt";
-		balance_node.configuration["parameters_topic"]  = "pid_params";
+		balance_node.configuration.left_pwm_topic = "pwm_left";
+		balance_node.configuration.right_pwm_topic = "pwm_right";
+		balance_node.configuration.attitude_topic = "imu";
+		balance_node.configuration.setpoint_topic = "tilt";
+		balance_node.configuration.parameters_topic = "pid_params";
 		balance_node.configuration.period = 20;
 		balance_node.configuration.offset = 0.4;
+		balance_node.configuration.kp = -250.0 / 4096.0;
+		balance_node.configuration.ti = 0.2;
+		balance_node.configuration.td = 0.02;
 
-		velocity_node.configuration["left_encoder_topic"]  = "encoder_left";
-		velocity_node.configuration["right_encoder_topic"] = "encoder_right";
-		velocity_node.configuration["setpoint_topic"]      = "velocity_sp";
-		velocity_node.configuration["output_topic"]        = "tilt";
-		velocity_node.configuration["wheel_radius"]        = 0.155f / 2;
+
+		velocity_node.configuration.left_encoder_topic = "encoder_left";
+		velocity_node.configuration.right_encoder_topic = "encoder_right";
+		velocity_node.configuration.setpoint_topic = "velocity_sp";
+		velocity_node.configuration.output_topic = "tilt";
+		velocity_node.configuration.wheel_radius = 0.155f / 2;
 		velocity_node.configuration.period = 50;
+		velocity_node.configuration.kp = 2.0;
+		velocity_node.configuration.ti = 0.0;
+		velocity_node.configuration.td = -0.1;
 
 		//@@NODE_CONFIGURATIONS@@//
 

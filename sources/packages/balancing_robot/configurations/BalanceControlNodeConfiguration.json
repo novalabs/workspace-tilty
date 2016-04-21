@@ -44,6 +44,24 @@
       "description": "Tilt offset [deg]",
       "type": "FLOAT32",
       "size": 1
+    },
+    {
+      "name": "kp",
+      "description": "PID controller gain",
+      "type": "FLOAT32",
+      "size": 1
+    },
+    {
+      "name": "ti",
+      "description": "PID controller integral term",
+      "type": "FLOAT32",
+      "size": 1
+    },
+    {
+      "name": "td",
+      "description": "PID controller derivative term",
+      "type": "FLOAT32",
+      "size": 1
     }
  ]
 }
