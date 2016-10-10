@@ -1,0 +1,6 @@
+{
+  "name": "balancing_robot",
+  "provider": "core",
+  "namespace": "@",
+  "description": "Balancing robot control nodes"
+}

@@ -1,0 +1,7 @@
+build/
+generated/
+OpenOCD/
+RemoteSystemsTempFiles/
+setup.sh
+WORKSPACE.json
+.metadata
