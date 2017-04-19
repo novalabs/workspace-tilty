@@ -55,7 +55,9 @@ extern "C" {
       encoder_node.setConfiguration(encoder_configuration);
       module.add(encoder_node);
 
+      // PWM node
       pwm_subscriber_configuration.topic = "pwm_right";
+      pwm_node.setConfiguration(pwm_subscriber_configuration);
       module.add(pwm_node);
 
       // ... and let's play!

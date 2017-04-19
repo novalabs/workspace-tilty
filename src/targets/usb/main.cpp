@@ -30,33 +30,6 @@ static const ShellCommand commands[] = {
 };
 
 /*
- * Test node.
- */
-void
-test_sub_node(
-   void* arg
-)
-{
-   core::mw::Node node("test_sub");
-   core::mw::Subscriber<core::common_msgs::String64, 5> sub;
-   core::common_msgs::String64* msgp;
-
-   (void)arg;
-   chRegSetThreadName("test_sub");
-
-   node.subscribe(sub, "test");
-
-   for (;;) {
-      node.spin(core::os::Time::ms(1000));
-
-      if (sub.fetch(msgp)) {
-         module.stream.printf("%s\r\n", msgp->data);
-         sub.release(*msgp);
-      }
-   }
-} // test_sub_node
-
-/*
  * IMU subscriber node.
  */
 void
@@ -66,11 +39,11 @@ imu_sub_node(
 {
    core::mw::Node node("imu_sub");
 
-   core::mw::Subscriber<core::sensor_msgs::RPY_f32, 2>     imu_sub;
+   core::mw::Subscriber<core::sensor_msgs::RPY_f32, 2> imu_sub;
    core::mw::Subscriber<core::common_msgs::Vector3_i16, 2> acc_sub;
    core::mw::Subscriber<core::common_msgs::Vector3_i16, 2> gyro_sub;
 
-   core::sensor_msgs::RPY_f32*     imu_msgp;
+   core::sensor_msgs::RPY_f32* imu_msgp;
    core::common_msgs::Vector3_i16* acc_msgp;
    core::common_msgs::Vector3_i16* gyro_msgp;
 
@@ -166,10 +139,8 @@ imu_sub_node_status(
 
 // --- NODES ------------------------------------------------------------------
 core::led::Subscriber led_subscriber("led_subscriber", core::os::Thread::PriorityEnum::LOWEST);
-core::led::Publisher  led_publisher("led_publisher");
 
 // --- CONFIGURATIONS ---------------------------------------------------------
-core::led::PublisherConfiguration  led_publisher_configuration;
 core::led::SubscriberConfiguration led_subscriber_configuration;
 
 // --- MAIN -------------------------------------------------------------------
@@ -180,11 +151,6 @@ extern "C" {
    )
    {
       module.initialize();
-
-      led_publisher_configuration.topic = "led";
-      led_publisher_configuration.led   = 1;
-      led_publisher.setConfiguration(led_publisher_configuration);
-      module.add(led_publisher);
 
       // Led subscriber node
       led_subscriber_configuration.topic = "led";
